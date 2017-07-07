@@ -1,44 +1,55 @@
 class System
-  attr_reader :bodies, :name, :mass
-
-  @bodies = []
-
-  def total_mass
-    @bodies.each do |celestial_body|
-      sum = sum + celestial_body
-      return sum
-    end
-  end
 
 end
 
 class Body
-    attr_reader :name, :mass
+  attr_reader :bodies, :name, :mass
 
-    def iniitalize(name, mass)
-      @name = name
-      @mass = mass
+  @@bodies = []
+
+  def initialize(name, mass)
+
+    @name = name
+    @mass = mass
+
+  end
+
+  def self.total_mass
+    sum = 0
+    @@bodies.each do |celestial_body|
+      sum += celestial_body.mass
     end
+    puts "The current total mass is #{sum}."
+  end
 
+  def self.add(new_body)
 
-  def add
-    new_body = Body.new
-    @bodies << new_body
-    # return new_body  <-- not sure if I need this
+    @@bodies << new_body
+
+  end
+
+  def self.mass_total
+    @@bodies
   end
 
 end
 
 class Planet < Body
-  #day (# of hours to rotate once)
-  #year (# of days to orbit sun)
+
+  @day = 24 # of hours to rotate once
+  @year = 365 # of days to orbit sun
+
 end
 
 class Star < Body
-  #type (e.g G-type)
+
+  @type = "g" #(e.g G-type)
+
 end
 
 class Moon < Body
-  #month (# of days to orbit planet)
-  # planet that they orbit
+
+  @month = 30 # of days to orbit planet
+  @planet = "earth" # planet that they orbit
+
 end
