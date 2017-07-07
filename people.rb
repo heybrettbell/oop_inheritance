@@ -20,7 +20,9 @@ class Student < Person
 end
 
 class Instructor < Person
-  def tech
+  def teach
     puts "Everything in Ruby is an Object."
   end
 end
+
+# "Teach method doesn't work on the student instance because the student is not in the Instructor class, where the 'teach' method is defined."
